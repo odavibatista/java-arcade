@@ -51,4 +51,12 @@ public class GamingCard {
         // Success message
         System.out.println("Points decreed: " + points);
     }
+
+    public int getPoints() {
+        return this.points;
+    }
+
+    public double getBalance()  {
+        return this.balance;
+    }
 }
