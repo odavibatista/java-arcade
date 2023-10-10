@@ -40,16 +40,14 @@ public class GamingCard {
         System.out.println("Points added: " + moneySpent);
     }
 
-    public void decreePoints(double points) {
+    public void decreeBalance(double balance) {
         // Check if points is greater than this.points
-        if (points > this.points) {
+        if (balance > this.balance) {
             System.out.println("Insufficient points!");
             return;
         }
         // Success if points is less than this.points
-        this.points -= (int) points;
-        // Success message
-        System.out.println("Points decreed: " + points);
+        this.balance -= (int) balance;
     }
 
     public int getPoints() {

@@ -63,4 +63,45 @@ public class Player {
         // Return the player's info and print the gaming card's info
         return "Player: " + this.NAME + " | Balance: " + this.balance + " | Gaming Card's Balance: " + this.gamingCard.getBalance() + " | Gaming Card's points: " + this.gamingCard.getPoints();
     }
+
+    public void play(Game game)  throws Exception{
+        // Check if the player has a gaming card
+        if (this.gamingCard == null) {
+            System.out.println("Player " + this.NAME + " doesn't have a gaming card!");
+            return;
+        }
+
+        // Get variables from the game instance
+        String name = game.getNAME();
+        int price = game.getPRICE();
+        int reward = game.getREWARD();
+
+        // Check if the player has enough points to play
+        if (this.gamingCard.getPoints() < price) {
+            System.out.println("Insufficient points!");
+            return;
+        }
+
+        // Default playing message
+        System.out.println("Player " + this.NAME + " played " + name + "...");
+
+        // Decree the player's points
+        this.gamingCard.decreeBalance(price);
+
+        Thread.sleep(1500);
+
+        // Run a coin flip to check if the player won or not
+        int coinFlip = (int) Math.round(Math.random());
+
+        // Add the reward to the player's gaming card if the coin flip is 1
+        if (coinFlip == 1) {
+            this.gamingCard.addPoints(reward);
+            System.out.println("You won!");
+            System.out.println("Liquid profits: " + (reward - price));
+        }
+        else {
+            System.out.println("You lost!");
+            System.out.println("Losses: " + price);
+        }
+    }
 }
