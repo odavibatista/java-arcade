@@ -7,50 +7,48 @@ public class GamingCard {
         this.points = points | 10;
     }
 
-    // create a constructor where point is not passed
     public GamingCard(double balance) {
         this.balance = balance;
         this.points = 10;
     }
 
     public void decreeMoney(double amount) {
-        // check if amount is greater than balance
+        // Check if amount is greater than balance
         if (amount > this.balance) {
             System.out.println("Insufficient funds!");
             return;
         }
-        // amount is less than balance
+        // Amount is less than balance
         this.balance -= amount;
-        // success message
+        // Success message
         System.out.println("Balance decreed: " + amount);
     }
 
+    // Method for adding funds to the card's balance
     public void addBalance(double amount) {
-        // add funds to the card's balance
+        // Add funds to the card's balance
         this.balance += amount;
-        // success message
+        // Success message
         System.out.println("Balance added: " + amount);
     }
 
     public void addPoints(double moneySpent) {
         decreeMoney(moneySpent);
-        // convert moneySpent to integer
-        int points = (int) moneySpent;
-        // add points to this.points
+        // Add points to this.points
         this.points += (int) moneySpent;
-        // success message
+        // Success message
         System.out.println("Points added: " + moneySpent);
     }
 
     public void decreePoints(double points) {
-        // check if points is greater than this.points
+        // Check if points is greater than this.points
         if (points > this.points) {
             System.out.println("Insufficient points!");
             return;
         }
-        // points is less than this.points
+        // Success if points is less than this.points
         this.points -= (int) points;
-        // success message
+        // Success message
         System.out.println("Points decreed: " + points);
     }
 }
