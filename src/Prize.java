@@ -14,4 +14,17 @@ public class Prize {
     public String getInfo() {
         return "Prize: " + this.NAME + " | Price: " + this.PRICE + " | Category: " + this.CATEGORY;
     }
+
+    public String getName() {
+        return this.NAME;
+    }
+
+
+    public int getPRICE() {
+        return this.PRICE;
+    }
+
+    public String getNAME() {
+        return this.NAME;
+    }
 }

@@ -1,7 +1,7 @@
 public class Player {
     private final String NAME;
     private double balance;
-    GamingCard gamingCard;
+    private GamingCard gamingCard;
 
     // Player class' constructor
     Player(String name, double balance) {
@@ -64,6 +64,22 @@ public class Player {
         return "Player: " + this.NAME + " | Balance: " + this.balance + " | Gaming Card's Balance: " + this.gamingCard.getBalance() + " | Gaming Card's points: " + this.gamingCard.getPoints();
     }
 
+    public GamingCard getGamingCard() {
+        return this.gamingCard;
+    }
+
+    public void addPointsToGamingCard(int points)  {
+        // Check if the player has a gaming card
+        if (this.gamingCard == null) {
+            System.out.println("Player " + this.NAME + " doesn't have a gaming card!");
+            return;
+        }
+
+        // Add points to the player's gaming card
+        this.gamingCard.addPoints(points);
+        System.out.println("Player's actual balance: " + this.balance);
+    }
+
     public void play(Game game)  throws Exception{
         // Check if the player has a gaming card
         if (this.gamingCard == null) {
@@ -99,9 +115,36 @@ public class Player {
             System.out.println("You won!");
             System.out.println("Liquid profits: " + (reward - price));
         }
+
+        // Inform the loss
         else {
             System.out.println("You lost!");
             System.out.println("Losses: " + price);
         }
+    }
+
+    public void buyPrize(Prize prize)   {
+        // Check if the player has a gaming card
+        if (this.gamingCard == null) {
+            System.out.println("Player " + this.NAME + " doesn't have a gaming card!");
+            return;
+        }
+
+        // Get variables from the prize instance
+        String name = prize.getNAME();
+        int price = prize.getPRICE();
+
+        // Check if the player has enough points to buy the prize
+        if (this.gamingCard.getPoints() < price) {
+            System.out.println("Insufficient points!");
+            return;
+        }
+
+        // Decree the player's points
+        this.gamingCard.decreeBalance(price);
+
+        // Default buying message
+        System.out.println("Player " + this.NAME + " bought " + name + " for " + price + " points!");
+
     }
 }
